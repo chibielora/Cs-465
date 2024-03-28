@@ -4,7 +4,7 @@ const rooms = JSON.parse(fs.readFileSync('./data/rooms.json' , 'utf8'));
 /* GET room view */
 
 const room = (req, res) => {
-    res.render('travel', { title: "Travlr Rooms" , rooms});
+    res.render('rooms', { title: "Travlr Rooms" , rooms});
 
 };
 
