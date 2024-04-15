@@ -1,4 +1,4 @@
-<div class="card" style="width: 16rem;">
+<div class="card">
     <div class="card-header">{{trip.name}}</div>
     <img src="assets/images/{{trip.image}}"
     alt="trip thumbnail" class="card-img-top">
@@ -7,7 +7,7 @@
             {{trip.resort}}
         </h6>
         <p class="card-subtitle mt-3 mb-3 text-muted">
-            {{trip.length}} only {{trip.perPerson|currency:'USD':true}} per person
+            {{trip.length}} only {{trip.perPerson|currency:'USD':'symbol'}} per person
         </p>
         <p class="card-text" [innerHTML]="trip.description">
         </p>
