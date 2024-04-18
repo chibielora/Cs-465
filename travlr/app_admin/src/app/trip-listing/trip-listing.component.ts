@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TripCardComponent } from '../trip-card/trip-card.component';
 import { Trip } from '../models/trips';
 import { TripDataService } from '../services/trip-data.service';
-import { TripCardComponent } from '../trip-card/trip-card.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +19,8 @@ export class TripListingComponent implements OnInit {
   message: string = '';
 
   constructor(
-    private tripDataService: TripDataService, private router: Router
+    private tripDataService: TripDataService,
+    private router: Router
     ) {
     console.log('Trip-listing constructor');
   }
@@ -30,6 +31,7 @@ export class TripListingComponent implements OnInit {
   // Must be public so it can be accessed by the trip-listing component[]
 
   private getStuff(): void {
+    console.log('Inside trip listing component #getStuff')
     this.tripDataService.getTrips()
     .subscribe({
       next: (value: any) => {

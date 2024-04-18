@@ -1,6 +1,6 @@
 <div class="col-md-4">
 <h2 class="text-center">Add Trip</h2>
-<form *nglf="addForm" [formGroup]="addForm" (ngSubmit)="onSubmit()">
+<form *ngIf="addForm" [formGroup]="addForm" (ngSubmit)="onSubmit()">
     <div class="form-group mb-3">
         <label>Code:</label>
         <input type="text" formControlName="code"
