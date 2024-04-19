@@ -89,6 +89,7 @@ const tripsAddTrip = async (req, res) => {
 // and JSON message to the requesting client
 const tripsUpdateTrip = async (req, res) => {
     // console.log(req.body);
+    // console.log(req.params);
     const q = await Model
         .findOneAndUpdate(
         { 'code': req.params.tripCode },
@@ -115,6 +116,8 @@ const tripsUpdateTrip = async (req, res) => {
             .status(201)
             .json(q);
         }
+    // Uncomment the following line to show results of operation
+    // console.log(q);
 };
 
 module.exports = {
