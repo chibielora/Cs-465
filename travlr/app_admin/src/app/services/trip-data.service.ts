@@ -27,8 +27,8 @@ export class TripDataService {
     return this.http.get<Trip[]>(this.url + '/' + tripCode);
   }
 
-  updateTrip(formData: Trip) : Observable<Trip> {
+  updateTrip(tripCode: string, formData: Trip) : Observable<Trip> {
     // console.log('Inside TripDataService::addTrips');
-    return this.http.put<Trip>(this.url + '/' + formData.code, formData);
+    return this.http.put<Trip>(this.url + '/' + tripCode, formData);
   }  
 }
