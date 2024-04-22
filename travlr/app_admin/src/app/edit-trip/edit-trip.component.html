@@ -1,6 +1,7 @@
 <div class="col-md-4">
     <h2 class="text-center">Edit Trip</h2>
     <form *ngIf="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <input type="hidden" formControlName="tripCode">
         <div class="form-group mb-3">
             <label>Code:</label>
             <input type="text" formControlName="code" placeholder="Code" class="form-control"

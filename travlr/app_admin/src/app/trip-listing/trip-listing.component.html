@@ -2,7 +2,7 @@
 <div>
     <button (click)="addTrip()" class="btn btn-info">Add Trip</button>
 </div>
-<div class="row">
+<div class="row mt-1" style="--bs-gutter-y: 1.5rem">
     <div *ngFor="let trip of trips" class="col-md-4">
         <app-trip-card [trip]="trip" class="card-deck mt-2">
         </app-trip-card>

@@ -42,6 +42,7 @@ export class EditTripComponent implements OnInit {
     // initialize form builder
     this.editForm = this.formBuilder.group({
       _id: [],
+      tripCode: [tripCode],
       code: [tripCode, Validators.required],
       name: ['', Validators.required],
       length: ['', Validators.required],
@@ -81,16 +82,16 @@ export class EditTripComponent implements OnInit {
     this.submitted = true;
 
     if (this.editForm.valid) {
-      this.tripService.updateTrip(this.editForm.value)
+      this.tripService.updateTrip(this.editForm.value.tripCode, this.editForm.value)
         .subscribe({
           next : (value: any) => {
             console.log(value);
             this.router.navigate(['']);
           },
-        error : (error : any) => {
-          console.log('Error' + error);
-        }
-      })
+          error : (error : any) => {
+            console.log('Error' + error);
+          }
+        })
     }
   }
   get f() {

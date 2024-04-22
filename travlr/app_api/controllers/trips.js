@@ -110,7 +110,8 @@ const tripsUpdateTrip = async (req, res) => {
             // Database returned no data
             return res
             .status(400)
-            .json(err);
+            .json({ error: "Trip not found" })
+            // .json(err);
         } else {
             return res
             .status(201)
