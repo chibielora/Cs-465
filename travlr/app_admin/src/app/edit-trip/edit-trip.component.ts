@@ -7,10 +7,8 @@ import { Trip } from '../models/trips';
 
 @Component({
   selector: 'app-edit-trip',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './edit-trip.component.html',
-  styleUrl: './edit-trip.component.css'
+  styleUrls: ['./edit-trip.component.css']
 })
 
 export class EditTripComponent implements OnInit {
@@ -57,40 +55,20 @@ export class EditTripComponent implements OnInit {
     
     // Check if it's tripDataService or private tripService
     this.tripService.getTrip(tripCode)
-      .subscribe({
-        // console.log(data);
-        next : (value : any) => {
-          this.trip = value;
-          // Populate our record into the form
-          this.editForm.patchValue(value[0]);
-
-          if(!value) {
-            this.message = 'No Trip Retrieved!';
-          } else {
-            this.message = 'Trip:' + tripCode + 'Retrieved';
-          }
-          console.log(this.message)
-        },
-
-        error : (error : any) => {
-          console.log('Error' + error);
-        }
-    })
+      .then(data => {
+        console.log(data);
+        this.editForm.patchValue(data);
+      })
   }
 
   public onSubmit() {
     this.submitted = true;
 
     if (this.editForm.valid) {
-      this.tripService.updateTrip(this.editForm.value.tripCode, this.editForm.value)
-        .subscribe({
-          next : (value: any) => {
-            console.log(value);
+      this.tripService.updateTrip(this.editForm.value)
+        .then(data => {
+            console.log(data);
             this.router.navigate(['']);
-          },
-          error : (error : any) => {
-            console.log('Error' + error);
-          }
         })
     }
   }
