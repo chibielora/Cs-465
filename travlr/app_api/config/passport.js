@@ -8,10 +8,7 @@ passport.use(new LocalStrategy({
     },
 
     (username, password, done) => {
-        User.findOne({ email: username }, (err, user) => {
-            if (err) {
-                return done(err);
-            }
+        User.findOne({ email: username }).then((user) => {
             if (!user) {
                 return done(null, false, {
                     message: 'Incorrect username.'
@@ -24,6 +21,6 @@ passport.use(new LocalStrategy({
             }
             
             return done(null, user);
-        });
+        }).catch(err => done(err));
     }
 ));

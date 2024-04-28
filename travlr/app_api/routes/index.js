@@ -11,12 +11,14 @@ const auth = jwt({
 
 // This is where we import the controllers we will route
 const tripsController = require('../controllers/trips');
-const authController = require('../controllers/authentication')
+const authController = require('../controllers/authentication');
 
+// Authenticate user
 router
     .route('/login')
     .post(authController.login);
 
+// Register new user
 router
     .route('/register')
     .post(authController.register);

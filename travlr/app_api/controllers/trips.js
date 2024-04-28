@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Trip = require('../models/travlr'); // Register model
-const Model = mongoose.model('trips');
+const User = require("../models/user")
 
 const getUser = (req, res, callback) => {
     if (req.payload && req.payload.email) {
@@ -37,7 +37,7 @@ const getUser = (req, res, callback) => {
 // and JSON message to the requesting client
 
 const tripslist = async(req, res) => {
-    const q = await Model
+    const q = await Trip
         .find({}) // No filter, return all records
         .exec();
 
@@ -62,7 +62,7 @@ const tripslist = async(req, res) => {
 // and JSON message to the requesting client
 
 const tripsFindByCode = async(req, res) => {
-    const q = await Model
+    const q = await Trip
         .find({ 'code' : req.params.tripCode }) // Return single record
         .exec();
 

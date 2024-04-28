@@ -6,7 +6,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const passport = require('passport')
+const passport = require('passport');
 
 // Define Server Routers
 var indexRouter = require('./app_server/routes/index');
@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(passport.initialize);
+app.use(passport.initialize());
 
 // Enable CORS
 app.use('/api', (req, res, next) => {
@@ -62,9 +62,7 @@ app.use((err, req, res, next) => {
   if (err.name === 'UnauthorizedError') {
     res
       .status(401)
-      .json({
-        "message": err.name + ": " + err.message
-      });
+      .json({ "message": err.name + ": " + err.message });
   }
 });
 
